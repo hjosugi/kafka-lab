@@ -1,0 +1,26 @@
+services:
+  flink-jobmanager:
+    build: ./examples/flink
+    command: jobmanager
+    ports:
+      - "127.0.0.1:8081:8081"
+    environment:
+      FLINK_PROPERTIES: |
+        jobmanager.rpc.address: flink-jobmanager
+        parallelism.default: 1
+    volumes:
+      - ./examples/flink:/sql:ro
+      - flink-checkpoints:/checkpoints
+  flink-taskmanager:
+    build: ./examples/flink
+    command: taskmanager
+    depends_on: [flink-jobmanager]
+    environment:
+      FLINK_PROPERTIES: |
+        jobmanager.rpc.address: flink-jobmanager
+        taskmanager.numberOfTaskSlots: 4
+        parallelism.default: 1
+    volumes:
+      - flink-checkpoints:/checkpoints
+volumes:
+  flink-checkpoints:

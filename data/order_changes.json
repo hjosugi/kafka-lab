@@ -1,0 +1,47 @@
+[
+  {
+    "event_id": "f0a61350-019a-5f5b-bed9-1932b2bd0ebe",
+    "order_id": 1001,
+    "version": 1,
+    "op": "upsert",
+    "customer_id": "u1",
+    "amount_cents": 1200,
+    "status": "paid"
+  },
+  {
+    "event_id": "b042f3ca-fef3-55d2-ada3-c3fcad1e5ff7",
+    "order_id": 1002,
+    "version": 1,
+    "op": "upsert",
+    "customer_id": "u1",
+    "amount_cents": 500,
+    "status": "paid"
+  },
+  {
+    "event_id": "cac057f6-cde3-598e-9c09-8fbbb2e0c59c",
+    "order_id": 1001,
+    "version": 2,
+    "op": "upsert",
+    "customer_id": "u1",
+    "amount_cents": 1800,
+    "status": "paid"
+  },
+  {
+    "event_id": "09f00d08-cbcd-5a35-83c2-c9a783cac18d",
+    "order_id": 1002,
+    "version": 2,
+    "op": "delete",
+    "customer_id": "u1",
+    "amount_cents": 500,
+    "status": "paid"
+  },
+  {
+    "event_id": "a9efc290-1a7e-5b7d-befe-1fd80eef8de0",
+    "order_id": 1003,
+    "version": 1,
+    "op": "upsert",
+    "customer_id": "u2",
+    "amount_cents": 700,
+    "status": "paid"
+  }
+]

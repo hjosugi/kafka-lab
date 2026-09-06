@@ -1,0 +1,60 @@
+{
+  "log_counts": [
+    [
+      "catalog",
+      "INFO",
+      1
+    ],
+    [
+      "checkout",
+      "ERROR",
+      3
+    ],
+    [
+      "checkout",
+      "INFO",
+      1
+    ]
+  ],
+  "recommendation_scores": [
+    [
+      "u1",
+      "books",
+      9
+    ],
+    [
+      "u1",
+      "music",
+      1
+    ],
+    [
+      "u2",
+      "music",
+      5
+    ]
+  ],
+  "alerts": [
+    [
+      "checkout",
+      "2026-09-06T00:00:00+00:00",
+      4,
+      3
+    ]
+  ],
+  "orders": [
+    [
+      1001,
+      "u1",
+      1800,
+      "paid",
+      2
+    ],
+    [
+      1003,
+      "u2",
+      700,
+      "paid",
+      1
+    ]
+  ]
+}

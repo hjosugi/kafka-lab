@@ -1,0 +1,7 @@
+# Small persistent standalone lab. Initialize a fresh volume after changing system parameters.
+# The upstream 256 MiB SST default needs a larger compactor memory budget.
+[system]
+sstable_size_mb = 32
+
+[server]
+telemetry_enabled = false

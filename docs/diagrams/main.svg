@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="910" viewBox="0 0 1300 910" role="img" aria-labelledby="title desc">
+<title id="title">Modern Streaming Lab architecture</title><desc id="desc">Kafka and native PostgreSQL CDC feed RisingWave. A transactional outbox feeds an idempotent SQLite migration target through Kafka.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#557c91"/></marker></defs>
+<rect width="1300" height="910" fill="#f5f8fb"/>
+<text x="70" y="63" font-family="sans-serif" font-size="30" font-weight="700" fill="#163043">Modern Streaming Lab</text>
+<text x="70" y="99" font-family="sans-serif" font-size="17" fill="#536b7c">Continuous analytics, native CDC, and replay-safe migration</text>
+<path d="M200 230 V320" stroke="#557c91" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M200 410 V500" stroke="#557c91" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M200 590 V710" stroke="#557c91" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M780 185 H970" stroke="#557c91" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M1100 230 V320" stroke="#557c91" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M1100 410 V500" stroke="#557c91" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M1100 590 V710" stroke="#557c91" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M970 755 H780" stroke="#557c91" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M520 185 H425 V545 H330" stroke="#557c91" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M650 230 V710" stroke="#9baab6" stroke-width="2.5" stroke-dasharray="8 6" fill="none" marker-end="url(#arrow)"/>
+<rect x="70" y="140" width="260" height="90" rx="12" fill="#ffffff" stroke="#b5cbd8" stroke-width="2"/>
+<text x="88" y="175" font-family="sans-serif" font-size="19" font-weight="700" fill="#17384d">Event producer</text>
+<text x="88" y="202" font-family="sans-serif" font-size="12.5" fill="#536b7c">JSON fixture / 11 records</text>
+<rect x="70" y="320" width="260" height="90" rx="12" fill="#ffffff" stroke="#b5cbd8" stroke-width="2"/>
+<text x="88" y="355" font-family="sans-serif" font-size="19" font-weight="700" fill="#17384d">Kafka: lab.events</text>
+<text x="88" y="382" font-family="sans-serif" font-size="12.5" fill="#536b7c">Retention and replay</text>
+<rect x="70" y="500" width="260" height="90" rx="12" fill="#ffffff" stroke="#b5cbd8" stroke-width="2"/>
+<text x="88" y="535" font-family="sans-serif" font-size="19" font-weight="700" fill="#17384d">RisingWave</text>
+<text x="88" y="562" font-family="sans-serif" font-size="12.5" fill="#536b7c">Incremental SQL + native CDC</text>
+<rect x="70" y="710" width="260" height="90" rx="12" fill="#ffffff" stroke="#b5cbd8" stroke-width="2"/>
+<text x="88" y="745" font-family="sans-serif" font-size="19" font-weight="700" fill="#17384d">Serving views</text>
+<text x="88" y="772" font-family="sans-serif" font-size="12.5" fill="#536b7c">Logs / scores / alerts / revenue</text>
+<rect x="520" y="140" width="260" height="90" rx="12" fill="#ffffff" stroke="#b5cbd8" stroke-width="2"/>
+<text x="538" y="175" font-family="sans-serif" font-size="19" font-weight="700" fill="#17384d">PostgreSQL orders</text>
+<text x="538" y="202" font-family="sans-serif" font-size="12.5" fill="#536b7c">Source of truth</text>
+<rect x="970" y="140" width="260" height="90" rx="12" fill="#ffffff" stroke="#b5cbd8" stroke-width="2"/>
+<text x="988" y="175" font-family="sans-serif" font-size="19" font-weight="700" fill="#17384d">PostgreSQL outbox</text>
+<text x="988" y="202" font-family="sans-serif" font-size="12.5" fill="#536b7c">Same transaction as orders</text>
+<rect x="970" y="320" width="260" height="90" rx="12" fill="#ffffff" stroke="#b5cbd8" stroke-width="2"/>
+<text x="988" y="355" font-family="sans-serif" font-size="19" font-weight="700" fill="#17384d">Outbox publisher</text>
+<text x="988" y="382" font-family="sans-serif" font-size="12.5" fill="#536b7c">Acknowledge before marking sent</text>
+<rect x="970" y="500" width="260" height="90" rx="12" fill="#ffffff" stroke="#b5cbd8" stroke-width="2"/>
+<text x="988" y="535" font-family="sans-serif" font-size="19" font-weight="700" fill="#17384d">Kafka: lab.orders</text>
+<text x="988" y="562" font-family="sans-serif" font-size="12.5" fill="#536b7c">Key = order_id</text>
+<rect x="970" y="710" width="260" height="90" rx="12" fill="#ffffff" stroke="#b5cbd8" stroke-width="2"/>
+<text x="988" y="745" font-family="sans-serif" font-size="19" font-weight="700" fill="#17384d">Migration consumer</text>
+<text x="988" y="772" font-family="sans-serif" font-size="12.5" fill="#536b7c">Commit target before offset</text>
+<rect x="520" y="710" width="260" height="90" rx="12" fill="#ffffff" stroke="#b5cbd8" stroke-width="2"/>
+<text x="538" y="745" font-family="sans-serif" font-size="19" font-weight="700" fill="#17384d">SQLite target</text>
+<text x="538" y="772" font-family="sans-serif" font-size="12.5" fill="#536b7c">Projection + durable inbox</text>
+<text x="439" y="365" font-family="sans-serif" font-size="15" fill="#536b7c">Native CDC</text>
+<text x="663" y="485" font-family="sans-serif" font-size="15" fill="#536b7c">Reconciliation</text>
+<text x="805" y="170" font-family="sans-serif" font-size="15" fill="#536b7c">Atomic write</text>
+<text x="70" y="863" font-family="sans-serif" font-size="14" fill="#536b7c">Main lab only. Flink, Fluss, Materialize, Arroyo and Iceberg are separate comparison examples.</text></svg>

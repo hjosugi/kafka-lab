@@ -1,0 +1,8 @@
+services:
+  materialize:
+    image: docker.io/materialize/materialized:v26.39.0
+    ports:
+      - "127.0.0.1:6874:6874"
+      - "127.0.0.1:6875:6875"
+      - "127.0.0.1:6876:6876"
+      - "127.0.0.1:6877:6877"

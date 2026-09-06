@@ -1,0 +1,59 @@
+name: kafka-lab-fluss
+services:
+  zookeeper:
+    image: docker.io/library/zookeeper:3.9.2
+    volumes:
+      - zk-data:/data
+      - zk-log:/datalog
+  coordinator-server:
+    image: docker.io/apache/fluss:0.9.1-incubating
+    command: coordinatorServer
+    depends_on: [zookeeper]
+    environment:
+      FLUSS_PROPERTIES: |
+        zookeeper.address: zookeeper:2181
+        bind.listeners: FLUSS://coordinator-server:9123
+        remote.data.dir: /tmp/fluss/remote-data
+    volumes:
+      - shared-data:/tmp/fluss
+  tablet-server:
+    image: docker.io/apache/fluss:0.9.1-incubating
+    command: tabletServer
+    depends_on: [coordinator-server]
+    environment:
+      FLUSS_PROPERTIES: |
+        zookeeper.address: zookeeper:2181
+        bind.listeners: FLUSS://tablet-server:9123
+        tablet-server.id: 0
+        data.dir: /tmp/fluss/data
+        remote.data.dir: /tmp/fluss/remote-data
+    volumes:
+      - shared-data:/tmp/fluss
+  jobmanager:
+    image: docker.io/apache/fluss-quickstart-flink:1.20-0.9.1-incubating
+    command: jobmanager
+    ports:
+      - "127.0.0.1:8083:8081"
+    environment:
+      FLINK_PROPERTIES: |
+        jobmanager.rpc.address: jobmanager
+        parallelism.default: 1
+    volumes:
+      - ./:/sql:ro
+      - shared-data:/tmp/fluss
+  taskmanager:
+    image: docker.io/apache/fluss-quickstart-flink:1.20-0.9.1-incubating
+    command: taskmanager
+    depends_on: [jobmanager]
+    environment:
+      FLINK_PROPERTIES: |
+        jobmanager.rpc.address: jobmanager
+        taskmanager.numberOfTaskSlots: 6
+        taskmanager.memory.process.size: 2048m
+        parallelism.default: 1
+    volumes:
+      - shared-data:/tmp/fluss
+volumes:
+  shared-data:
+  zk-data:
+  zk-log:

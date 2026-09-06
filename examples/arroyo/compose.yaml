@@ -1,0 +1,5 @@
+services:
+  arroyo:
+    image: ghcr.io/arroyosystems/arroyo:0.15.0
+    ports:
+      - "127.0.0.1:5115:5115"
