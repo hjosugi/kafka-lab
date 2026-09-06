@@ -5,7 +5,6 @@ import sys
 import time
 from pathlib import Path
 from urllib.request import urlopen
-from urllib.error import URLError
 from confluent_kafka import Consumer, TopicPartition
 from streaming_lab.transport import BROKER
 
@@ -17,7 +16,7 @@ if '--ready' in sys.argv:
                 if json.load(response)['taskmanagers']:
                     print('PASS: Flink TaskManager registered')
                     sys.exit(0)
-        except (URLError, TimeoutError):
+        except OSError:
             pass
         time.sleep(2)
     raise TimeoutError('Flink TaskManager not registered')

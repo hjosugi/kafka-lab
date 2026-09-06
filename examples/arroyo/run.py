@@ -2,7 +2,6 @@
 import json
 import time
 from pathlib import Path
-from urllib.error import URLError
 from urllib.request import Request, urlopen
 from confluent_kafka import Consumer
 from streaming_lab.transport import BROKER, emit_events
@@ -21,7 +20,7 @@ while True:
     try:
         api('/pipelines')
         break
-    except (URLError, TimeoutError):
+    except OSError:
         if time.monotonic() > deadline:
             raise
         time.sleep(2)

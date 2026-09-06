@@ -5,7 +5,6 @@ import re
 import subprocess
 import time
 from pathlib import Path
-from urllib.error import URLError
 from urllib.request import urlopen
 
 root = Path(__file__).resolve().parents[1]
@@ -52,7 +51,7 @@ else:
             with urlopen('http://localhost:8083/taskmanagers', timeout=5) as response:
                 if json.load(response)['taskmanagers']:
                     break
-        except (URLError, TimeoutError):
+        except OSError:
             pass
         time.sleep(2)
     else:
