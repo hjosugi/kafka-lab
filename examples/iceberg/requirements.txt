@@ -1,2 +1,2 @@
 pyiceberg[pyarrow,sql-sqlite]==0.10.0
-duckdb==1.4.0
+duckdb==1.4.2
